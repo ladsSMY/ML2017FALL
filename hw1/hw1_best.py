@@ -36,7 +36,7 @@ for i in range(12):
     for j in range(471):
         x.append([])
         # 18 types 
-        for t in range(9,10): #only want type 9
+        for t in range(7,10): #onlyuu want type 7 to 9
             # 9 hours
             for s in range(9):
                 x[471*i+j].append(data[t][480*i+j+s] )
@@ -58,10 +58,10 @@ repeat = 20000
 
 
 '''CLOSE FORM SOLUTION'''
-#w = np.matmul(np.matmul(inv(np.matmul(x.transpose(),x)),x.transpose()),y)
+w = np.matmul(np.matmul(inv(np.matmul(x.transpose(),x)),x.transpose()),y)
 
 
-'''TRAINING'''
+'''TRAINING
 x_t = x.transpose()
 s_gra = np.zeros(len(x[0]))
 
@@ -74,7 +74,7 @@ for i in range(repeat):
     s_gra += gra**2
     ada = np.sqrt(s_gra)
     w = w - l_rate * gra/ada
-    print ('iteration: %d | Cost: %f  ' % ( i,cost_a))
+    print ('iteration: %d | Cost: %f  ' % ( i,cost_a))'''
 
 
 '''SAVE/READ MODEL'''
@@ -111,8 +111,8 @@ test_x = np.concatenate((np.ones((test_x.shape[0],1)),test_x), axis=1)
 
 test_x = np.transpose(test_x)
 temp_x = np.concatenate((np.transpose(test_x[0:1]), 
-                         np.transpose(test_x[82:91]),
-                         np.transpose(test_x[244:253])), axis = 1)####
+                         np.transpose(test_x[64:91]),
+                         np.transpose(test_x[226:253])), axis = 1)####
 test_x = temp_x
 
 
