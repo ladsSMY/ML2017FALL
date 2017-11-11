@@ -1,3 +1,3 @@
 #!/bin/bash
-python3.5 hw2_generative.py $1 $2 $3 $4 $5 $6
+python hw2_generative.py $1 $2 $3 $4 $5 $6
  
