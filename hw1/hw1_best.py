@@ -15,7 +15,7 @@ for i in range(18):
 	data.append([])
 
 n_row = 0
-text = open('train.csv', 'r') 
+text = open('data/train.csv', 'r', encoding='big5') 
 row = csv.reader(text , delimiter=",")
 for r in row:
     if n_row != 0:
