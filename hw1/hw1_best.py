@@ -9,7 +9,7 @@ import sys
 input_ = sys.argv[1]
 output_ = sys.argv[2]
 
-'''READ DATA'''
+'''READ DATA
 data = []
 for i in range(18):
 	data.append([])
@@ -25,10 +25,10 @@ for r in row:
             else:
                 data[(n_row-1)%18].append(float(0))	
     n_row = n_row+1
-text.close()
+text.close()'''
 
 
-'''PARSE DATA TO (X,Y)'''
+'''PARSE DATA TO (X,Y)
 x = []
 y = []
 # 12 months are not continues
@@ -48,17 +48,17 @@ y = np.array(y)
 x = np.concatenate((x,x**2), axis=1)
 
 # add bias
-x = np.concatenate((np.ones((x.shape[0],1)),x), axis=1)
+x = np.concatenate((np.ones((x.shape[0],1)),x), axis=1)'''
 
 
-'''INIT HYPERPARAMS'''
+'''INIT HYPERPARAMS
 w = np.zeros(len(x[0]))
 l_rate = 10
-repeat = 20000
+repeat = 20000'''
 
 
-'''CLOSE FORM SOLUTION'''
-w = np.matmul(np.matmul(inv(np.matmul(x.transpose(),x)),x.transpose()),y)
+'''CLOSE FORM SOLUTION
+w = np.matmul(np.matmul(inv(np.matmul(x.transpose(),x)),x.transpose()),y)'''
 
 
 '''TRAINING
@@ -77,8 +77,8 @@ for i in range(repeat):
     print ('iteration: %d | Cost: %f  ' % ( i,cost_a))'''
 
 
-'''SAVE/READ MODEL'''
-np.save('model.npy',w)
+'''SAVE/READ MODEL
+np.save('model.npy',w)'''
 w = np.load('model.npy')
 
 
