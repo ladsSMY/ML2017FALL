@@ -8,11 +8,11 @@ There are two scripts in this folder:
 
 1. Train the model with training data, and save the model, cnn.h5py in direct folder.
 
-bash hw3_train.sh <training data>
+		bash hw3_train.sh (training data)
 
 2. Test the model with test data, the script and python files should put together with model files (cnn.h5py), and it will export result to the direct you specified.
 
-bash hw3_test.sh <testing data> <prediction file>
+		bash hw3_test.sh (testing data) (prediction file)
 
 
 
