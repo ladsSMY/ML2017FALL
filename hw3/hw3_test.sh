@@ -1,2 +1,2 @@
 #!/bin/bash
-python testmodel.py $1 $2
+python3 testmodel.py $1 $2

@@ -1,2 +1,2 @@
 #!/bin/bash
-python cnn.py $1 
+python3 cnn.py $1 
