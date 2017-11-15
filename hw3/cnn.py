@@ -144,4 +144,4 @@ record = model.fit_generator(generate.flow(feature, label, batch_size=128),
 							 epochs=20)
 
 #save model and pic
-model.save('cnn.h5py')
+model.save('cnn.h5')
