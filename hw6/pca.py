@@ -53,7 +53,7 @@ def reconstructure(eigen):
 	recon = (recon * 255).astype(np.uint8)
 	recon = recon.reshape(600,600,3)
 
-	io.imsave('reconstruction.jpg', recon)
+	io.imsave('reconstruction.jpg', recon, quality=100)
 
 
 
