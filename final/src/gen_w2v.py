@@ -3,20 +3,25 @@ import jieba
 from timeit import default_timer as time
 from time import ctime as clk
 import sys
+from os import listdir
+from os.path import isfile, join
+
 
 print('>>>>>>>>>> start <<<<<<<<<<')
-print(clk())
+print('start time:', clk())
 t1 = time()
 
-jieba.set_dictionary('data/dict.txt.big')
-
+trainpath = sys.argv[1]
 dataFile = list()
-dataFile.append('data/1_train.txt')
-dataFile.append('data/2_train.txt')
-dataFile.append('data/3_train.txt')
-dataFile.append('data/4_train.txt')
-dataFile.append('data/5_train.txt')
+files = listdir(trainpath)
+for f in files:
+	fullpath = join(trainpath, f)
+	if isfile(fullpath):
+		if f.split('.')[1] == 'txt':
+			dataFile.append(fullpath)
 
+
+jieba.set_dictionary('data/dict.txt.big')
 nonStopContent = []
 stopdata = 'data/stopwords.txt'
 stopWords = []
@@ -24,6 +29,7 @@ with open(stopdata,'r') as stop:
 	for line in stop:
 		line=line.strip('\n')
 		stopWords.append(line)
+
 
 print('process forward to: filter nonStopWords')
 article_num = 0
@@ -37,15 +43,17 @@ for i in range(len(dataFile)):
 				nonStopContent.append(lines_1)
 			article_num += 1
 
+
 for e in stopWords:
 	jieba.del_word(e)
 print('process forward to: save nonStopWords.txt')
 
-nonStopContent_path = 'data/w2v_source.txt'
 
+nonStopContent_path = 'data/w2v_source.txt'
 with open(nonStopContent_path,'w') as f:
 	for row in nonStopContent:
 		f.write(str(row))			
+
 
 #word2vec
 nonStopContent_path = 'data/w2v_source.txt'
@@ -55,10 +63,10 @@ sentences = word2vec.Text8Corpus(nonStopContent_path)
 
 ##########################################################
 
-dim				= int(sys.argv[1]) #128
-windows			= int(sys.argv[2]) #15
-min_count		= int(sys.argv[3]) #1
-iteration		= int(sys.argv[4]) #50
+dim				= int(sys.argv[2]) 
+windows			= int(sys.argv[3]) 
+min_count		= 1
+iteration		= int(sys.argv[4]) 
 
 name = 'dim'+str(dim)+'win'+str(windows)+'min'+str(min_count)+'iter'+str(iteration)
 
