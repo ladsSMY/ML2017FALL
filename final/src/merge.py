@@ -3,7 +3,7 @@ import sys
 
 print('getting file list...')
 filelist = list()
-for n in range(len(sys.argv)):
+for n in range(len(sys.argv)-1):
 	if n == 0:
 		continue
 	filelist.append(sys.argv[n])
@@ -29,7 +29,7 @@ print('save result with shape:', vote.shape)
 
 print('start export answer')
 
-save = open('answer/ensemble.csv', 'w')
+save = open(sys.argv[len(sys.argv)-1], 'w')
 save.write('id,ans\n')
 for i in range(len(vote)):
 	save.write(str(i+1) + ',' + str(vote[i]) + '\n')

@@ -8,7 +8,7 @@ import gensim
 
 
 jieba.set_dictionary('data/dict.txt.big')
-dataFile = open("data/testing_data.csv","r",encoding='UTF-8')
+dataFile = open(sys.argv[1], "r", encoding='UTF-8')
 testing_df = pd.read_csv(dataFile)
 testing_cut_set = []
 
@@ -51,7 +51,7 @@ def processing_testing_data(data):
 def get_ans(q,opt,model,cnt):
 	
 	emb_cnt = 0
-	dim = int(sys.argv[1])
+	dim = int(sys.argv[2])
 	avg_dlg_emb = np.zeros((dim,))
 	
 	for words in q:
@@ -99,7 +99,7 @@ def get_ans(q,opt,model,cnt):
 id_,question_set,options_set = processing_testing_data(testing_df)
 
 
-w2vModel_path = sys.argv[2] ##
+w2vModel_path = sys.argv[3] ##
 model = KeyedVectors.load(w2vModel_path)
 
 
@@ -107,7 +107,7 @@ answer = []
 for cnt in range(len(question_set)):
 	answer.append(get_ans(question_set[cnt],options_set[cnt],model,cnt))
 
-name = sys.argv[3]
+name = sys.argv[4]
 
 print('prediction is done')
 f = open('answer/'+name+'.csv','w')
