@@ -18,6 +18,7 @@ training datas directory 為存放五個training data的資料夾，執行時會
   
   
 2. Predict answer  
+** 助教請執行這個就好**  
 使用以下指令來產生預測出來的答案  
 
 		bash s2.sh <testing data> <prediction file>
